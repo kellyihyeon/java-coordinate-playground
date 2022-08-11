@@ -15,12 +15,9 @@ public class DistanceCalculator {
     }
 
     public double extractSquareRoot() {
-        double pow = 0;
-        if (coordinates.hasSecond()) {
-            Coordinate first = coordinates.findFirstCoordinate();
-            Coordinate second = coordinates.findSecondCoordinate();
-            pow = Math.pow((first.getX() - second.getX()), 2) + Math.pow((first.getY() - second.getY()), 2);
-        }
+        Coordinate first = coordinates.findFirstCoordinate();
+        Coordinate second = coordinates.findSecondCoordinate();
+        double pow = Math.pow((first.getX() - second.getX()), 2) + Math.pow((first.getY() - second.getY()), 2);
         return Math.sqrt(pow);
     }
 }
