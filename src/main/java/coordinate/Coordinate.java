@@ -28,6 +28,14 @@ public class Coordinate {
         return this.equals(coordinate);
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
