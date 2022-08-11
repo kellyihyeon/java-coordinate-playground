@@ -1,7 +1,7 @@
-package coordinate.domain;
+package rentcompany.car;
 
 import org.junit.jupiter.api.Test;
-import java.util.ArrayList;
+import rentcompany.RentCompany;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RentCompanyTest {
@@ -11,7 +11,7 @@ class RentCompanyTest {
 
     @Test
     public void report() {
-        RentCompany company = new RentCompany(new ArrayList<>());
+        RentCompany company = RentCompany.create();
         company.addCar(new Sonata(150));
         company.addCar(new K5(260));
         company.addCar(new Sonata(120));
@@ -24,7 +24,6 @@ class RentCompanyTest {
                 + "Sonata : 12리터" + NEWLINE
                 + "Avante : 20리터" + NEWLINE
                 + "K5 : 30리터" + NEWLINE;
-
         assertEquals(expected, report);
     }
 
