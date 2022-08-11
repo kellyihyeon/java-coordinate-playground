@@ -1,5 +1,8 @@
 package coordinate;
 
+import coordinate.distance.Coordinate;
+import coordinate.distance.CoordinateSplit;
+import coordinate.distance.Coordinates;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 

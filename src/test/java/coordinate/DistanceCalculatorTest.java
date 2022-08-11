@@ -1,5 +1,8 @@
 package coordinate;
 
+import coordinate.distance.Coordinate;
+import coordinate.distance.Coordinates;
+import coordinate.distance.DistanceCalculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

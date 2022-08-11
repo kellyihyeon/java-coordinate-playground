@@ -1,4 +1,4 @@
-package coordinate;
+package coordinate.distance;
 
 import java.util.ArrayList;
 import java.util.List;
