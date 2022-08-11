@@ -13,4 +13,13 @@ public class CoordinateSplit {
 
         return Arrays.asList(Integer.parseInt(stringX), Integer.parseInt(stringY));
     }
+
+    public static Coordinates byDash(String input) {
+        Coordinates coordinates = new Coordinates();
+        for (String rawCoordinate : input.split("-")) {
+            List<Integer> nums = byComma(rawCoordinate);
+            coordinates.add(new Coordinate(nums.get(0), nums.get(1)));
+        }
+        return coordinates;
+    }
 }
