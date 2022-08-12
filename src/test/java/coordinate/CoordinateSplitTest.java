@@ -14,8 +14,8 @@ public class CoordinateSplitTest {
         String input = "(10,10)-(14,15)";
         Coordinates coordinates = CoordinateSplit.byDash(input);
 
-        assertEquals(new Coordinate(10, 10), coordinates.findFirstCoordinate());
-        assertEquals(new Coordinate(14, 15), coordinates.findSecondCoordinate());
+        assertEquals(new Coordinate(10, 10), coordinates.findCoordinateAt(0));
+        assertEquals(new Coordinate(14, 15), coordinates.findCoordinateAt(1));
     }
 
     @Test

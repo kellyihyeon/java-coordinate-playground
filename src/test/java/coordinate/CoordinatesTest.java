@@ -21,7 +21,7 @@ class CoordinatesTest {
     @DisplayName("좌표값이 하나인데 두번째 좌표값을 요청하면 IllegalArgumentException 예외가 발생한다.")
     void 두번째_좌표값이_존재하지_않는_경우() {
         coordinates.add(new Coordinate(24, 24));
-        assertThrows(IllegalArgumentException.class, () -> coordinates.findSecondCoordinate());
+        assertThrows(IllegalArgumentException.class, () -> coordinates.findCoordinateAt(1));
     }
 
     @Test

@@ -11,21 +11,15 @@ public class Coordinates {
         coordinates.add(coordinate);
     }
 
-    public Coordinate findFirstCoordinate() {
-        final int FIRST_INDEX = 0;
-        return coordinates.get(FIRST_INDEX);
-    }
-
-    public Coordinate findSecondCoordinate() {
-        final int SECOND_INDEX = 1;
-        if (!hasSecond()) {
-            throw new IllegalArgumentException("두번째 좌표값이 존재하지 않습니다.");
+    public Coordinate findCoordinateAt(int index) {
+        if (!isExisted(index)) {
+            throw new IllegalArgumentException(index + "번째 좌표값이 존재하지 않습니다.");
         }
-        return coordinates.get(SECOND_INDEX);
+        return coordinates.get(index);
     }
 
-    public boolean hasSecond() {
-        return coordinates.size() == 2;
+    private boolean isExisted(int index) {
+        return coordinates.size() >= index + 1;
     }
 
     public boolean isEmpty() {

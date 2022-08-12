@@ -2,19 +2,27 @@ package coordinate;
 
 import coordinate.distance.Coordinate;
 import coordinate.distance.Coordinates;
-import coordinate.distance.DistanceCalculator;
+import coordinate.distance.CoordinateCalculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class DistanceCalculatorTest {
+public class CoordinateCalculatorTest {
 
-    DistanceCalculator calculator;
+    static class SampleCalculator extends CoordinateCalculator {
+
+        @Override
+        public double calculate() {
+            return 0;
+        }
+    }
+
+    private SampleCalculator sut;
 
     @BeforeEach
     void setUp() {
-        calculator = new DistanceCalculator();
+        sut = new SampleCalculator();
     }
 
     @Test
@@ -23,11 +31,10 @@ public class DistanceCalculatorTest {
         coordinates.add(new Coordinate(10, 10));
         coordinates.add(new Coordinate(14, 15));
 
-        calculator.report(coordinates);
-        double distance = calculator.extractSquareRoot();
+        sut.report(coordinates);
+        double distance = sut.extractSquareRoot();
 
         assertEquals(6.403124, distance, 0.000001);
-
     }
 
     @Test
@@ -36,8 +43,8 @@ public class DistanceCalculatorTest {
         coordinates.add(new Coordinate(10, 10));
         coordinates.add(new Coordinate(24, 24));
 
-        calculator.report(coordinates);
+        sut.report(coordinates);
 
-        assertTrue(calculator.hasCoordinate());
+        assertTrue(sut.hasCoordinate());
     }
 }
