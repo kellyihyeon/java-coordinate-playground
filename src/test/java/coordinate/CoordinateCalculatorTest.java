@@ -13,7 +13,7 @@ public class CoordinateCalculatorTest {
     static class SampleCalculator extends CoordinateCalculator {
 
         @Override
-        public double calculate() {
+        public double calculateArea() {
             return 0;
         }
     }
