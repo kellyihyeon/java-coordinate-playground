@@ -26,7 +26,7 @@ public class Coordinates {
         return coordinates.isEmpty();
     }
 
-    public boolean isRectangle() {
+    public boolean hasFourPoints() {
         return coordinates.size() == 4;
     }
 }
