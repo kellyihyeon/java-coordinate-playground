@@ -1,7 +1,9 @@
 package coordinate.distance;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class Coordinates {
 
@@ -28,5 +30,21 @@ public class Coordinates {
 
     public boolean hasFourPoints() {
         return coordinates.size() == 4;
+    }
+
+    public List<Integer> findAllX() {
+        List<Integer> allX = new LinkedList<>();
+        for (Coordinate point : coordinates) {
+            allX.add(point.getX());
+        }
+        return allX;
+    }
+
+    public List<Integer> findAllY() {
+        List<Integer> allY = new LinkedList<>();
+        for (Coordinate point : coordinates) {
+            allY.add(point.getY());
+        }
+        return allY;
     }
 }

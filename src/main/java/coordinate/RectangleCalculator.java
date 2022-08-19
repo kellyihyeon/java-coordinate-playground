@@ -9,10 +9,6 @@ public class RectangleCalculator extends DistanceCalculator {
 
 
     public RectangleCalculator(Coordinates fourPoints) {
-        if (!fourPoints.hasFourPoints()) {
-            throw new IllegalArgumentException("사각형이 되려면 좌표가 4개가 필요합니다.");
-        }
-
         RectangleChecker rectangleChecker = new RectangleChecker(fourPoints);
         if (!rectangleChecker.isRectangle()) {
             throw new IllegalArgumentException("사각형 모양이 아닙니다.");
