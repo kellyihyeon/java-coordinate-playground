@@ -25,4 +25,8 @@ public class Coordinates {
     public boolean isEmpty() {
         return coordinates.isEmpty();
     }
+
+    public boolean isRectangle() {
+        return coordinates.size() == 4;
+    }
 }

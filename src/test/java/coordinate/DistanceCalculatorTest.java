@@ -2,15 +2,15 @@ package coordinate;
 
 import coordinate.distance.Coordinate;
 import coordinate.distance.Coordinates;
-import coordinate.distance.CoordinateCalculator;
+import coordinate.distance.DistanceCalculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CoordinateCalculatorTest {
+public class DistanceCalculatorTest {
 
-    static class SampleCalculator extends CoordinateCalculator {
+    static class SampleCalculator extends DistanceCalculator {
 
         @Override
         public double calculateArea() {

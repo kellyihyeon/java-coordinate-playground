@@ -10,15 +10,11 @@ public class RectangleCalculatorTest {
 
     @Test
     void create() {
-        Coordinates coordinates = new Coordinates();
-        coordinates.add(new Coordinate(10,10));
-        coordinates.add(new Coordinate(22,10));
-        coordinates.add(new Coordinate(22,18));
-        coordinates.add(new Coordinate(10,18));
+        Coordinates threePoints = new Coordinates();
+        threePoints.add(new Coordinate(10, 10));
+        threePoints.add(new Coordinate(22, 10));
+        threePoints.add(new Coordinate(22, 18));
 
-        RectangleCalculator rectangleCalc = new RectangleCalculator();
-        rectangleCalc.report(coordinates);
-
-        assertTrue(rectangleCalc.hasCoordinate());
+        assertThrows(IllegalArgumentException.class, () -> new RectangleCalculator(threePoints));
     }
 }
