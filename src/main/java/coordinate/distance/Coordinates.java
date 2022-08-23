@@ -64,4 +64,8 @@ public class Coordinates {
     public Coordinate findAny() {
         return coordinates.stream().findAny().orElseThrow(() -> new IllegalArgumentException("좌표가 존재하지 않습니다."));
     }
+
+    public boolean hasExactPoints(int numberOfPoints) {
+        return coordinates.size() == numberOfPoints;
+    }
 }
