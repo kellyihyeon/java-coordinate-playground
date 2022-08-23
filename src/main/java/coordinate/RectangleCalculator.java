@@ -1,5 +1,6 @@
 package coordinate;
 
+import coordinate.distance.Coordinate;
 import coordinate.distance.Coordinates;
 import coordinate.distance.DistanceCalculator;
 
@@ -19,7 +20,30 @@ public class RectangleCalculator extends DistanceCalculator {
 
     @Override
     public double calculateArea() {
-        return 0;
+        Coordinate standard = fourPoints.findAny();
+        return extractWidth(standard) * extractHeight(standard);
+    }
+
+    private double extractHeight(Coordinate standard) {
+        Coordinate samePointByX = fourPoints.findPointToSameX(standard);
+
+        Coordinates coordinates = new Coordinates();
+        coordinates.add(standard);
+        coordinates.add(samePointByX);
+
+        report(coordinates);
+        return extractSquareRoot();
+    }
+
+    private double extractWidth(Coordinate standard) {
+        Coordinate samePointByY = fourPoints.findPointToSameY(standard);
+
+        Coordinates coordinates = new Coordinates();
+        coordinates.add(standard);
+        coordinates.add(samePointByY);
+
+        report(coordinates);
+        return extractSquareRoot();
     }
 
 }

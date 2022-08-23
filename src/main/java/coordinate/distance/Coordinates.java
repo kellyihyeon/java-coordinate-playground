@@ -1,9 +1,6 @@
 package coordinate.distance;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class Coordinates {
 
@@ -46,5 +43,25 @@ public class Coordinates {
             allY.add(point.getY());
         }
         return allY;
+    }
+
+    public Coordinate findPointToSameX(Coordinate standard) {
+        return coordinates.stream()
+                .filter(point -> !standard.equals(point))
+                .filter(point -> standard.getX() == point.getX())
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("x축이 같은 좌표가 존재하지 않습니다."));
+    }
+
+    public Coordinate findPointToSameY(Coordinate standard) {
+        return coordinates.stream()
+                .filter(point -> !standard.equals(point))
+                .filter(point -> standard.getY() == point.getY())
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("y축이 같은 좌표가 존재하지 않습니다."));
+    }
+
+    public Coordinate findAny() {
+        return coordinates.stream().findAny().orElseThrow(() -> new IllegalArgumentException("좌표가 존재하지 않습니다."));
     }
 }
