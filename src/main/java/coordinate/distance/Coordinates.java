@@ -27,26 +27,6 @@ public class Coordinates {
         return points.isEmpty();
     }
 
-    public boolean hasFourPoints() {
-        return points.size() == 4;
-    }
-
-    public List<Integer> findAllX() {
-        List<Integer> allX = new LinkedList<>();
-        for (Coordinate point : points) {
-            allX.add(point.getX());
-        }
-        return allX;
-    }
-
-    public List<Integer> findAllY() {
-        List<Integer> allY = new LinkedList<>();
-        for (Coordinate point : points) {
-            allY.add(point.getY());
-        }
-        return allY;
-    }
-
     public Coordinate findAny() {
         return points.stream().findAny().orElseThrow(() -> new IllegalArgumentException("좌표가 존재하지 않습니다."));
     }
@@ -68,5 +48,23 @@ public class Coordinates {
 
     public List<Coordinate> getIterator() {
         return this.points;
+    }
+
+    public Map<String, Set<Integer>> countPoints() {
+        Map<String, Set<Integer>> counter = new HashMap<>();
+
+        Set<Integer> xPoints = new HashSet<>();
+        for (Coordinate point : points) {
+            xPoints.add(point.getX());
+            counter.put("x", xPoints);
+        }
+
+        Set<Integer> yPoints = new HashSet<>();
+        for (Coordinate point : points) {
+            yPoints.add(point.getY());
+            counter.put("y", yPoints);
+        }
+
+        return counter;
     }
 }

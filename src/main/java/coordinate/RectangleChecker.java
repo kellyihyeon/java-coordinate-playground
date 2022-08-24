@@ -2,50 +2,31 @@ package coordinate;
 
 import coordinate.distance.Coordinates;
 
-import java.sql.ClientInfoStatus;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class RectangleChecker {
 
-    Map<String, Map<Integer, Integer>> checker = new HashMap<>();
+    private final int RECTANGLE_POINTS = 4;
+    private final Map<String, Integer> checker = new HashMap<>();
 
 
     public RectangleChecker(Coordinates points) {
-        if (!points.hasFourPoints()) {
+        if (!points.hasExactPoints(RECTANGLE_POINTS)) {
             throw new IllegalArgumentException("사각형이 되려면 좌표가 4개가 필요합니다.");
         }
-        savePointsToStore(points);
+
+        saveAllToChecker(points);
     }
 
-    private void savePointsToStore(Coordinates points) {
-        saveXPoints(points);
-        saveYPoints(points);
-
-    }
-
-    private void saveYPoints(Coordinates points) {
-        List<Integer> allY = points.findAllY();
-        Map<Integer, Integer> storeY = new HashMap<>();
-        for (Integer y : allY) {
-            storeY.put(y, storeY.getOrDefault(y, 0) + 1);
-        }
-
-        checker.put("y", storeY);
-    }
-
-    private void saveXPoints(Coordinates points) {
-        List<Integer> allX = points.findAllX();
-        Map<Integer, Integer> storeX = new HashMap<>();
-        for (Integer x : allX) {
-            storeX.put(x, storeX.getOrDefault(x, 0) + 1);
-        }
-
-        checker.put("x", storeX);
+    private void saveAllToChecker(Coordinates points) {
+        Map<String, Set<Integer>> counter = points.countPoints();
+        checker.put("x", counter.get("x").size());
+        checker.put("y", counter.get("y").size());
     }
 
     public boolean isRectangle() {
-        return checker.get("x").size() == 2 && checker.get("y").size() == 2;
+        return checker.get("x") == 2 && checker.get("y") == 2;
     }
 }

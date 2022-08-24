@@ -10,6 +10,16 @@ import static org.junit.jupiter.api.Assertions.*;
 class RectangleCheckerTest {
 
     @Test
+    void 좌표가_4개가_아닌_경우() {
+        Coordinates triangle = new Coordinates();
+        triangle.add(new Coordinate(10, 10));
+        triangle.add(new Coordinate(22, 10));
+        triangle.add(new Coordinate(22, 18));
+
+        assertThrows(IllegalArgumentException.class, () -> new RectangleChecker(triangle));
+    }
+
+    @Test
     @DisplayName("4개의 좌표 중에서 y축 2개가 같지 않으면 마름모이다.")
     void 마름모인_경우() {
         Coordinates diamond = new Coordinates();
