@@ -20,30 +20,19 @@ public class RectangleCalculator extends DistanceCalculator {
 
     @Override
     public double calculateArea() {
-        Coordinate standard = fourPoints.findAny();
-        return extractWidth(standard) * extractHeight(standard);
+        Coordinate standardPoint = fourPoints.findAny();
+
+        double area = 1;
+        Coordinates widthAndHeightPoints = fourPoints.findAllByStandardPoint(standardPoint);
+        for (Coordinate point : widthAndHeightPoints.getIterator()) {
+            Coordinates newPoints = new Coordinates();
+            newPoints.add(standardPoint);
+            newPoints.add(point);
+
+            report(newPoints);
+            area *= extractSquareRoot();
+        }
+
+        return area;
     }
-
-    private double extractHeight(Coordinate standard) {
-        Coordinate samePointByX = fourPoints.findPointToSameX(standard);
-
-        Coordinates coordinates = new Coordinates();
-        coordinates.add(standard);
-        coordinates.add(samePointByX);
-
-        report(coordinates);
-        return extractSquareRoot();
-    }
-
-    private double extractWidth(Coordinate standard) {
-        Coordinate samePointByY = fourPoints.findPointToSameY(standard);
-
-        Coordinates coordinates = new Coordinates();
-        coordinates.add(standard);
-        coordinates.add(samePointByY);
-
-        report(coordinates);
-        return extractSquareRoot();
-    }
-
 }
