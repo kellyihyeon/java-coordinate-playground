@@ -7,7 +7,6 @@ public class Coordinates {
     private final List<Coordinate> points = new ArrayList<>();
 
 
-
     public void add(Coordinate coordinate) {
         points.add(coordinate);
     }
@@ -36,14 +35,18 @@ public class Coordinates {
     }
 
     public Coordinates findAllByStandardPoint(Coordinate standardPoint) {
-        Coordinates points = new Coordinates();
+        Coordinates matchPoints = new Coordinates();
 
         this.points.stream()
                 .filter(point -> !standardPoint.equals(point))
-                .filter(point -> standardPoint.getX() == point.getX() || standardPoint.getY() == point.getY())
-                .forEach(points::add);
+                .filter(point -> isMatchTo(point, standardPoint))
+                .forEach(matchPoints::add);
 
-        return points;
+        return matchPoints;
+    }
+
+    private boolean isMatchTo(Coordinate point, Coordinate standardPoint) {
+        return standardPoint.getX() == point.getX() || standardPoint.getY() == point.getY();
     }
 
     public List<Coordinate> getIterator() {
