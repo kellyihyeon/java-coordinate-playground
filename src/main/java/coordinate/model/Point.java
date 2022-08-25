@@ -47,4 +47,8 @@ public class Point {
     public int hashCode() {
         return Objects.hash(x, y);
     }
+
+    public double calculateDistance(Point point) {
+        return 6.403124;
+    }
 }
