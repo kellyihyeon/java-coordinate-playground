@@ -1,6 +1,6 @@
 package coordinate;
 
-import coordinate.distance.Coordinate;
+import coordinate.model.Point;
 import coordinate.distance.Coordinates;
 import coordinate.distance.DistanceCalculator;
 
@@ -20,11 +20,11 @@ public class RectangleCalculator extends DistanceCalculator {
 
     @Override
     public double calculateArea() {
-        Coordinate standardPoint = fourPoints.findAny();
+        Point standardPoint = fourPoints.findAny();
 
         double area = 1;
         Coordinates widthAndHeightPoints = fourPoints.findAllByStandardPoint(standardPoint);
-        for (Coordinate point : widthAndHeightPoints.getIterator()) {
+        for (Point point : widthAndHeightPoints.getIterator()) {
             Coordinates newPoints = new Coordinates();
             newPoints.add(standardPoint);
             newPoints.add(point);

@@ -1,6 +1,6 @@
 package coordinate;
 
-import coordinate.distance.Coordinate;
+import coordinate.model.Point;
 import coordinate.distance.Coordinates;
 import coordinate.distance.DistanceCalculator;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,8 +28,8 @@ public class DistanceCalculatorTest {
     @Test
     void 두_좌표_사이_거리_구하기() {
         Coordinates coordinates = new Coordinates();
-        coordinates.add(new Coordinate(10, 10));
-        coordinates.add(new Coordinate(14, 15));
+        coordinates.add(new Point(10, 10));
+        coordinates.add(new Point(14, 15));
 
         sut.report(coordinates);
         double distance = sut.extractSquareRoot();
@@ -40,8 +40,8 @@ public class DistanceCalculatorTest {
     @Test
     void create() {
         Coordinates coordinates = new Coordinates();
-        coordinates.add(new Coordinate(10, 10));
-        coordinates.add(new Coordinate(24, 24));
+        coordinates.add(new Point(10, 10));
+        coordinates.add(new Point(24, 24));
 
         sut.report(coordinates);
 
